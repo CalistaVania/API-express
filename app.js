@@ -10,8 +10,13 @@ const connectDB = require("./app_api/models/db");
 const indexRouter = require('./app_server/routes/index');
 const usersRouter = require('./app_server/routes/users');
 const prodiRouter = require('./app_server/routes/prodi');
+const fakultasController = require('./app_server/routes/fakultas');
+
 const fakultasRouter = require('./app_api/routes/fakultas');
 
+const fakultasRouterApi = require('./app_api/routes/fakultas');
+const prodiRouterApi = require('./app_api/routes/prodi');
+var app = express();
 var app = express();
 
 // view engine setup
@@ -29,6 +34,10 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/prodi', prodiRouter);
 app.use("/api/fakultas", fakultasRouter);
+
+app.use("/fakultas", fakultasRouter);
+app.use("/api/fakultas", fakultasRouterApi);
+app.use("/api/prodi", prodiRouterApi);
 
 // Connect to MongoDB
 connectDB;

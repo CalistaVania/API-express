@@ -8,7 +8,7 @@ const getAllProdi = async (req, res) => {
         // const prodi = await Prodi.find();
         
         // Mengambil semua prodi dari database dan populate data Prodi berdasarkan Prodi_id
-        const prodi = await Prodi.find().populate("Prodi_id", "nama singkatan"); // Mengambil field 'nama' dari Fakultas
+        const prodi = await Prodi.find().populate("Fakultas_id", "nama singkatan"); // Mengambil field 'nama' dari Fakultas
        
         // Mengirimkan respons dengan status 200 dan data prodi
         res.status(200).json(prodi);

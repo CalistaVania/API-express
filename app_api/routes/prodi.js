@@ -1,9 +1,9 @@
 // Mengimpor modul express untuk membuat router
 const express = require("express");
 // Membuat instance router dari express
-const router = express.router();
+const router = express.Router();
 // Mengimpor controller prodi untuk menangani logika bisnis
-const prodiController = require("../contollers/prodiController");
+const prodiController = require("../controllers/prodiController");
 
 // Definisi rute untuk prodi
 // Mengatur rute GET untuk mendapatkan semua data prodi
