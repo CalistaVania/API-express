@@ -24,17 +24,14 @@
                     <th>Fakultas</th>
                     <th>Singkatan</th>
                 </tr>
-            </thead>
-            <tbody>
-                <% prodi.forEach(function(prodi) { %>
-                    <tr>
-                        <td><%= prodi.namaProdi %></td>
-                        <td><%= prodi.fakultas %></td>
-                        <td><%= prodi.singkatan %></td>
-                    </tr>
-                <% }); %>
-            </tbody>
+                <% prodi.forEach(data => { %>
+                <tr>
+                    <td><%= data.namaProdi %></td>
+                    <td><%= data.singkatan %></td>
+                    <td>
+                        <%= data.fakultas_id && data.fakultas_id.nama ? data.fakultas_id.nama :
+                        "Belum ada fakultas" %>
+                    </td>
+                </tr>
+                <% }) %>
         </table>
-    </div>
-<!-- </body>
-</html> -->
