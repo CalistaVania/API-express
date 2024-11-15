@@ -5,17 +5,21 @@ const router = express.Router();
 // Mengimpor Controller fakultas untuk menangani logika bisnis
 const fakultasController = require("../controllers/fakultasController");
 
+// Mengimpor middleware untuk autentikasi dan pengecekan peran
+const authMiddleware = require("../middleware/authMiddleware");
+const roleMiddleware = require("../middleware/roleMiddleware");
+
 // Definisi rute untuk fakultas
 // Mengatur rute GET untuk mendapatkan semua data fakultas
-router.get("/", fakultasController.getAllFakultas);
+router.get("/", authMiddleware, fakultasController.getAllFakultas);
 // Mengatur rute POST untuk membuat data fakultas baru
-router.get("/", fakultasController.createFakultas);
+router.get("/", authMiddleware, roleMiddleware("admin"), fakultasController.createFakultas);
 // Mengatur rute GET untuk mendapatkan data fakultas berdasarkan ID
-router.get("/:id", fakultasController.getFakultasById);
+router.get("/:id", authMiddleware, fakultasController.getFakultasById);
 // Mengatur rute PUT untuk memperbarui data fakultas berdasarkan ID
-router.put("/:id", fakultasController.updateFakultas);
+router.put("/:id", authMiddleware, roleMiddleware("admin"), fakultasController.updateFakultas);
 // Mengatur rute DELETE untuk menghapus data fakultas berdasarkan ID
-router.delete("/:id", fakultasController.deleteFakultas);
+router.delete("/:id", authMiddleware, roleMiddleware("admin"), fakultasController.deleteFakultas);
 
 // Mengeksport router agar dapat digunakan di file lain (misalnya, di app.js)
 module.exports = router;

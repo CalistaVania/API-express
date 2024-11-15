@@ -16,6 +16,9 @@ const fakultasRouter = require('./app_api/routes/fakultas');
 
 const fakultasRouterApi = require('./app_api/routes/fakultas');
 const prodiRouterApi = require('./app_api/routes/prodi');
+const authRouterApi = require("./app_api/routes/auth");
+
+require("dotenv").config(); // Load environment variables
 var app = express();
 var app = express();
 
@@ -38,6 +41,7 @@ app.use("/api/fakultas", fakultasRouter);
 app.use("/fakultas", fakultasRouter);
 app.use("/api/fakultas", fakultasRouterApi);
 app.use("/api/prodi", prodiRouterApi);
+app.use("/api/auth", authRouterApi);
 
 // Connect to MongoDB
 connectDB;
