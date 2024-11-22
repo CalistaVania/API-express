@@ -17,6 +17,7 @@ const fakultasRouter = require('./app_api/routes/fakultas');
 const fakultasRouterApi = require('./app_api/routes/fakultas');
 const prodiRouterApi = require('./app_api/routes/prodi');
 const authRouterApi = require("./app_api/routes/auth");
+const mahasiswaRouterApi = require("./app_api/routes/mahasiswa");
 
 require("dotenv").config(); // Load environment variables
 var app = express();
@@ -37,6 +38,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/prodi', prodiRouter);
 app.use("/api/fakultas", fakultasRouter);
+app.use("/api/mahasiswa", mahasiswaRouterApi);
 
 app.use("/fakultas", fakultasRouter);
 app.use("/api/fakultas", fakultasRouterApi);
